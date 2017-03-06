@@ -149,13 +149,25 @@ func (t *PayToBitChaincode) submitPaymentProof(stub shim.ChaincodeStubInterface,
 
 func (t *PayToBitChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	function, args := stub.GetFunctionAndParameters()
-	if function == "invoke" {
-		return t.invoke(stub, args)
-	} else if function == "query" {
-		return t.query(stub, args)
+	if function == "applyForSell" {
+		return t.applyForSell(stub, args)
+	} else if function == "bundingCoin" {
+		return t.bundingCoin(stub, args)
+	}
+	else if function == "revokeTx" {
+		return t.revokeTx(stub, args)
+	}
+	else if function == "bundingCoin" {
+		return t.bundingCoin(stub, args)
+	}
+	else if function == "getSellingList" {
+		return t.getSellingList(stub, args)
+	}
+	else if function == "getTxByID" {
+		return t.getTxByID(stub, args)
 	}
 
-	return shim.Error("Invalid invoke function name. Expecting \"invoke\" \"query\"")
+	return shim.Error("Invalid invoke function name.")
 }
 
 func main(){
