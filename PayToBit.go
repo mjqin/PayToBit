@@ -138,7 +138,7 @@ func (t *PayToBitChaincode) getTxByID(stub shim.ChaincodeStubInterface, args []s
 	if err != nil{
 		return shim.Error(err.Error())
 	}
-	return shim.Success(txInfo)
+	return shim.Success(nil)
 }
 
 /**** wait for implementation 
