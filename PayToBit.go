@@ -52,7 +52,7 @@ func (t *PayToBitChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 func (t *PayToBitChaincode) applyForSell(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	var dat map[string]string
 
-	publicInfoBytes, err := stub.GetState("publicInfo")
+	publicInfoBytes, _ := stub.GetState("publicInfo")
 	if err := json.Unmarshal(publicInfoBytes, &dat); err != nil {
         return shim.Error("Parsing json error.")
     }
