@@ -64,11 +64,11 @@ func (t *PayToBitChaincode) applyForSell(stub shim.ChaincodeStubInterface, args 
 }
 
 func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args []string) pb.Response {
-	var recvAddr, totalCoin, txID, transHash string
+	var recvAddr, totalCoin, txID string
 	var err error
 	recvAddr = args[0]
 	totalCoin = args[1]
-	// transHash = args[2]  // the transaction ID which seller paid to the public address, chaincode will check the transaction
+	// transHash := args[2]  // the transaction ID which seller paid to the public address, chaincode will check the transaction
 	txID = util.GenerateUUID() // generate a serial number randomly, call from fabric util
 
 	// check if the transaction exist
