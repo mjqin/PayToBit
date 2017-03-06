@@ -4,7 +4,6 @@
 package main
 
 import (
-	"./lib"
 	"fmt"
 	"strconv"
 	"encoding/json"
@@ -72,11 +71,11 @@ func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args [
 	var err string
 	recvAddr = args[0]
 	totalCoin = args[1]
-	transHash = args[2]  // the transaction ID which seller paid to the public address, chaincode will check the transaction
+	// transHash = args[2]  // the transaction ID which seller paid to the public address, chaincode will check the transaction
 	txID = util.GenerateUUID() // generate a serial number randomly, call from fabric util
 
 	// check if the transaction exist
-	res = lib.CheckTx(transHash)
+	// res = lib.CheckTx(transHash)
 
 	seller := "{\"recvAddr\":\"" + recvAddr + "\", \"totalCoin\":\"" + totalCoin + "\", \"txID\":\"" + txID + "\"}"
 	fmt.Println(seller)
