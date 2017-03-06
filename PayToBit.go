@@ -108,7 +108,7 @@ func (t *PayToBitChaincode) revokeTx(stub shim.ChaincodeStubInterface, args []st
 	return shim.Success(jsonResp)
 }
 
-func (t *PayToBitChaincode) getSellingList(stub shim.ChaincodeStubInterface, , args []string) pb.Response {
+func (t *PayToBitChaincode) getSellingList(stub shim.ChaincodeStubInterface,  args []string) pb.Response {
 	var res []string
 	threshold := args[0]
 	
