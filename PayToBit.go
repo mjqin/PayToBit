@@ -68,7 +68,7 @@ func (t *PayToBitChaincode) applyForSell(stub shim.ChaincodeStubInterface, args 
 
 func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	var recvAddr, totalCoin, txID, transHash string
-	var err string
+	var err error
 	recvAddr = args[0]
 	totalCoin = args[1]
 	// transHash = args[2]  // the transaction ID which seller paid to the public address, chaincode will check the transaction
