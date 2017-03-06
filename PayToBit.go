@@ -133,11 +133,12 @@ func (t *PayToBitChaincode) getSellingList(stub shim.ChaincodeStubInterface,  ar
 
 func (t *PayToBitChaincode) getTxByID(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	txID := args[0]
-	txInfo, err := stub.GetState("txID")
+	txInfoBytes, err := stub.GetState("txID")
+	txInfo := string(txInfoBytes)
 	if err != nil{
 		return shim.Error(err.Error())
 	}
-	return shim.Success(string(txInfo))
+	return shim.Success(txInfo)
 }
 
 /**** wait for implementation 
