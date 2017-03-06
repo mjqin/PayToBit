@@ -111,14 +111,16 @@ func (t *PayToBitChaincode) revokeTx(stub shim.ChaincodeStubInterface, args []st
 func (t *PayToBitChaincode) getSellingList(stub shim.ChaincodeStubInterface, , args []string) pb.Response {
 	var res []string
 	threshold := args[0]
-
-	for i := 0; seller, status := range sellerList; i++{
-		if i >= threshold {  // return the first #threshold seller information
-			break
-		}
-
+	
+	i := 0
+	for seller, status := range sellerList{
+		
 		if status {
 			res = append(res, seller)
+		}
+		i++
+		if i >= threshold {  // return the first #threshold seller information
+			break
 		}
 	}
 
