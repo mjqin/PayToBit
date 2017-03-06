@@ -154,17 +154,13 @@ func (t *PayToBitChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response
 		return t.applyForSell(stub, args)
 	} else if function == "bundingCoin" {
 		return t.bundingCoin(stub, args)
-	}
-	else if function == "revokeTx" {
+	}else if function == "revokeTx" {
 		return t.revokeTx(stub, args)
-	}
-	else if function == "bundingCoin" {
+	}else if function == "bundingCoin" {
 		return t.bundingCoin(stub, args)
-	}
-	else if function == "getSellingList" {
+	}else if function == "getSellingList" {
 		return t.getSellingList(stub, args)
-	}
-	else if function == "getTxByID" {
+	}else if function == "getTxByID" {
 		return t.getTxByID(stub, args)
 	}
 
