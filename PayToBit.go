@@ -26,7 +26,6 @@ func (t *PayToBitChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	fmt.Println("PayToBit Init")
 	_, args := stub.GetFunctionAndParameters()
 	var cashAddr, bitAddr string    // neutral account: bitcoin address and another payment address 
-	var totalCash, totalCoin int // total holdings
 	var err error
 	sellerList = make(map[string]bool)
 
@@ -35,12 +34,10 @@ func (t *PayToBitChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	}
 
 	cashAddr = args[0]
-	totalCash = 0
 
 	bitAddr = args[1]
-	totalCoin = 0
 
-	publicInfo := "{\"cashAddr\":\"" + cashAddr + "\", \"totalCash\":\"" + totalCash + "\", \"bitAddr\":\"" + bitAddr + "\", \"bitAddr\":\"" + totalCoin + "\"}"
+	publicInfo := "{\"cashAddr\":\"" + cashAddr + "\", \"totalCash\":0 , \"bitAddr\":\"" + bitAddr + "\", \"bitAddr\": 0"}"
 	fmt.Println(publicInfo)
 
 	// Write the state to the ledger
