@@ -63,7 +63,7 @@ func (t *PayToBitChaincode) applyForSell(stub shim.ChaincodeStubInterface, args 
 
 	jsonResp := "{\"addr\":\"" + dat["bitAddr"] + "\"}"
 	fmt.Printf("ApplyForSell Response:%s\n", jsonResp)
-	return shim.Success(jsonResp)
+	return shim.Success([]byte(jsonResp))
 }
 
 func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args []string) pb.Response {
@@ -85,7 +85,7 @@ func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args [
 	if err != nil{
 		return shim.Error(err.Error())
 	}
-	return shim.Success(seller)
+	return shim.Success([]byte(seller))
 }
 
 // Deletes an entity from state
@@ -105,7 +105,7 @@ func (t *PayToBitChaincode) revokeTx(stub shim.ChaincodeStubInterface, args []st
 	}
 
 	jsonResp := "{\"status\":\"transition " + txID + " has been canceled.\"}"
-	return shim.Success(jsonResp)
+	return shim.Success([]byte(jsonResp))
 }
 
 func (t *PayToBitChaincode) getSellingList(stub shim.ChaincodeStubInterface,  args []string) pb.Response {
@@ -128,7 +128,7 @@ func (t *PayToBitChaincode) getSellingList(stub shim.ChaincodeStubInterface,  ar
 	if err != nil{
 		return shim.Error(err.Error())
 	}
-	return shim.Success(jsonResp)
+	return shim.Success([]byte(jsonResp))
 }
 
 func (t *PayToBitChaincode) getTxByID(stub shim.ChaincodeStubInterface, args []string) pb.Response {
