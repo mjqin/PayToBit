@@ -110,7 +110,7 @@ func (t *PayToBitChaincode) revokeTx(stub shim.ChaincodeStubInterface, args []st
 
 func (t *PayToBitChaincode) getSellingList(stub shim.ChaincodeStubInterface,  args []string) pb.Response {
 	var res []string
-	threshold := args[0]
+	threshold, _ := strconv.Atoi(args[0])
 	
 	i := 0
 	for seller, status := range sellerList{
@@ -138,7 +138,7 @@ func (t *PayToBitChaincode) getTxByID(stub shim.ChaincodeStubInterface, args []s
 	if err != nil{
 		return shim.Error(err.Error())
 	}
-	return shim.Success(nil)
+	return shim.Success("Success")
 }
 
 /**** wait for implementation 
