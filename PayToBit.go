@@ -37,8 +37,8 @@ func (t *PayToBitChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 
 	bitAddr = args[1]
 
-	publicInfo := "{\"cashAddr\":\"" + cashAddr + "\", \"totalCash\":0 , \"bitAddr\":\"" + bitAddr + "\", \"bitAddr\": 0"}"
-	//fmt.Println(publicInfo)
+	publicInfo := "{\"cashAddr\":\"" + cashAddr + "\", \"totalCash\":0 , \"bitAddr\":\"" + bitAddr + "\", \"bitAddr\": 0}"
+	fmt.Println(publicInfo)
 
 	// Write the state to the ledger
 	err = stub.PutState("publicInfo", []byte(publicInfo))
