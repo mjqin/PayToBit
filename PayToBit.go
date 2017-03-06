@@ -82,7 +82,7 @@ func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args [
 
 	sellerList[txID] = true
 	err = stub.PutState(txID, []byte(seller))
-	if err != nil{
+	if err != nil {
 		return shim.Error("Put State Error.")
 	}
 	return shim.Success([]byte(seller))
@@ -125,7 +125,7 @@ func (t *PayToBitChaincode) getSellingList(stub shim.ChaincodeStubInterface,  ar
 	}
 
 	jsonResp, err := json.Marshal(res)
-	if err != nil{
+	if err != nil {
 		return shim.Error("Parsing json error.")
 	}
 	return shim.Success([]byte(jsonResp))
@@ -135,7 +135,7 @@ func (t *PayToBitChaincode) getTxByID(stub shim.ChaincodeStubInterface, args []s
 	txID := args[0]
 	txInfoBytes, err := stub.GetState("txID")
 	txInfo := string(txInfoBytes)
-	if err != nil{
+	if err != nil {
 		return shim.Error("Get State Error.")
 	}
 	return shim.Success([]byte(txInfo))
