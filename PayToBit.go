@@ -82,7 +82,8 @@ func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args [
 	if err != nil {
 		return shim.Error("Put State Error.")
 	}
-	return shim.Success([]byte(seller))
+	//return shim.Success([]byte(seller))
+	return []byte(strconv.Itoa(100))
 }
 
 // Deletes an entity from state
