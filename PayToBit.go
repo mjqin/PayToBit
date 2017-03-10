@@ -63,7 +63,7 @@ func (t *PayToBitChaincode) applyForSell(stub shim.ChaincodeStubInterface, args 
 	return shim.Success([]byte(jsonResp))
 }
 
-func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args []string) ([]byte) {
 	var recvAddr, totalCoin, txID string
 	var err error
 	recvAddr = args[0]
@@ -80,7 +80,7 @@ func (t *PayToBitChaincode) bundingCoin(stub shim.ChaincodeStubInterface, args [
 	sellerList[txID] = true
 	err = stub.PutState(txID, []byte(seller))
 	if err != nil {
-		return shim.Error("Put State Error.")
+		//return shim.Error("Put State Error.")
 	}
 	//return shim.Success([]byte(seller))
 	return []byte(strconv.Itoa(100))
